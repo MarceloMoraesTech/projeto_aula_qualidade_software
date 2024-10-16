@@ -1,0 +1,17 @@
+<div class="home-container">
+    <h1>Bem-vindo à Página Inicial</h1>
+  
+    <div *ngIf="userData; else noUser">
+      <h2>Dados Cadastrados:</h2>
+      <p><strong>Nome:</strong> {{ userData.nome }}</p>
+      <p><strong>Email:</strong> {{ userData.email }}</p>
+    </div>
+  
+    <ng-template #noUser>
+      <p>Nenhum usuário cadastrado.</p>
+    </ng-template>
+  
+    <a routerLink="/cadastro">Ir para Cadastro</a>
+  </div>
+
+  

@@ -1,0 +1,30 @@
+<div class="cadastro-container">
+    <form [formGroup]="cadastroForm" (ngSubmit)="onSubmit()">
+      <div>
+        <label for="nome">Nome</label>
+        <input id="nome" formControlName="nome" type="text" />
+        <div *ngIf="cadastroForm.get('nome')?.invalid && cadastroForm.get('nome')?.touched">
+          Nome é obrigatório.
+        </div>
+      </div>
+  
+      <div>
+        <label for="email">E-mail</label>
+        <input id="email" formControlName="email" type="email" />
+        <div *ngIf="cadastroForm.get('email')?.invalid && cadastroForm.get('email')?.touched">
+          Digite um e-mail válido.
+        </div>
+      </div>
+  
+      <div>
+        <label for="senha">Senha</label>
+        <input id="senha" formControlName="senha" type="password" />
+        <div *ngIf="cadastroForm.get('senha')?.invalid && cadastroForm.get('senha')?.touched">
+          Senha deve ter no mínimo 6 caracteres.
+        </div>
+      </div>
+  
+      <button type="submit" [disabled]="cadastroForm.invalid">Cadastrar</button>
+    </form>
+  </div>
+  

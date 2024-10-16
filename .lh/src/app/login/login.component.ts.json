@@ -1,0 +1,30 @@
+{
+    "sourceFile": "src/app/login/login.component.ts",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 3,
+            "patches": [
+                {
+                    "date": 1729035000515,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1729035294516,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,11 +7,13 @@\n   templateUrl: './login.component.html',\r\n   styleUrl: './login.component.css'\r\n })\r\n export class LoginComponent {\r\n-onSubmit() {\r\n-throw new Error('Method not implemented.');\r\n-}\r\n-username: any;\r\n-password: any;\r\n+  username: string = '';\r\n+  password: string = '';\r\n \r\n+  onSubmit() {\r\n+    console.log('Usuário:', this.username, 'Senha:', this.password);\r\n+    alert(`Login efetuado! Usuário: ${this.username}`);\r\n+  }\r\n+\r\n }\r\n"
+                },
+                {
+                    "date": 1729035530069,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,10 +1,9 @@\n import { Component, Input } from '@angular/core';\r\n \r\n @Component({\r\n   selector: 'app-login',\r\n-  standalone: true,\r\n-  imports: [],\r\n+  standalone: false,\r\n   templateUrl: './login.component.html',\r\n   styleUrl: './login.component.css'\r\n })\r\n export class LoginComponent {\r\n"
+                },
+                {
+                    "date": 1729035728465,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,9 +1,11 @@\n import { Component, Input } from '@angular/core';\r\n+import { FormsModule } from '@angular/forms';\r\n \r\n @Component({\r\n   selector: 'app-login',\r\n-  standalone: false,\r\n+  standalone: true,\r\n+  imports: [FormsModule], \r\n   templateUrl: './login.component.html',\r\n   styleUrl: './login.component.css'\r\n })\r\n export class LoginComponent {\r\n"
+                }
+            ],
+            "date": 1729035000515,
+            "name": "Commit-0",
+            "content": "import { Component, Input } from '@angular/core';\r\n\r\n@Component({\r\n  selector: 'app-login',\r\n  standalone: true,\r\n  imports: [],\r\n  templateUrl: './login.component.html',\r\n  styleUrl: './login.component.css'\r\n})\r\nexport class LoginComponent {\r\nonSubmit() {\r\nthrow new Error('Method not implemented.');\r\n}\r\nusername: any;\r\npassword: any;\r\n\r\n}\r\n"
+        }
+    ]
+}
