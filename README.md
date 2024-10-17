@@ -6,7 +6,7 @@ Se não tiver angular instalado em sua máquina pode fazer isso pelo comando:
 npm install -g @angular/cli
 
 ## Configuração do ambiente
-Execute o comando npm install no terminal para instalar possiveis dependencias e pacotes que você possa precisar para rodar a aplicação local.
+Execute o comando `npm install` no terminal para instalar possiveis dependencias e pacotes que você possa precisar para rodar a aplicação local.
 
 ## Development server
 
