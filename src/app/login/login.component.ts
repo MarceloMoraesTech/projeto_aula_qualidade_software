@@ -19,7 +19,6 @@ export class LoginComponent {
   
   onSubmit() {
     console.log('Usuário:', this.username, 'Senha:', this.password);
-    alert(`Login efetuado! Usuário: ${this.username}`);
     this.router.navigate(['/home']);
   }
 
