@@ -2,15 +2,17 @@
     <h1>Bem-vindo à Página Inicial</h1>
 
      <!-- Exibe a mensagem de sucesso -->
-     <div *ngIf="true" id="success-message">
-      <p> Login efetuado com sucesso </p>
+     <div *ngIf="usuarioValido" id="success-message">
+      <p class="success"> Login efetuado com sucesso </p>
   </div>
-  
-    <div *ngIf="userData; else noUser">
+  <div *ngFor="let usuario of usuarios">
+    <div *ngIf="usuarios; else noUser">
       <h2>Dados Cadastrados:</h2>
-      <p><strong>Nome:</strong> {{ userData.nome }}</p>
-      <p><strong>Email:</strong> {{ userData.email }}</p>
+      <p><strong>Nome:</strong> {{ usuario.nome}}</p>
+      <p><strong>Email:</strong> {{ usuario.email }}</p>
     </div>
+
+  </div>
   
     <ng-template #noUser>
       <p>Nenhum usuário cadastrado.</p>

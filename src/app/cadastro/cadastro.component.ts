@@ -25,7 +25,7 @@ export class CadastroComponent {
   onSubmit() {
     if (this.cadastroForm.valid) {
       console.log('Formulário enviado:', this.cadastroForm.value);
-      this.router.navigate(['/']);
+      this.router.navigate(['/home']);
     } else {
       console.log('Formulário inválido');
     }

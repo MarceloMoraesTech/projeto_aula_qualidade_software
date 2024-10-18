@@ -19,3 +19,7 @@
     background-color: #0056b3;
   }
   
+  .success {
+    color: green;
+    font-size: 25px;
+  }
