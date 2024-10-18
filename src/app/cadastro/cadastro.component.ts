@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';  // Importe o Router
+import { UsuarioService } from '../usuario.service';
+
 
 
 @Component({
@@ -14,7 +16,7 @@ import { Router } from '@angular/router';  // Importe o Router
 export class CadastroComponent {
   cadastroForm: FormGroup;
 
-  constructor(private fb: FormBuilder,  private router: Router) {
+  constructor(private fb: FormBuilder,  private router: Router, private usuarioService: UsuarioService) {
     this.cadastroForm = this.fb.group({
       nome: ['', [Validators.required]],
       email: ['', [Validators.required, Validators.email]],
@@ -24,10 +26,9 @@ export class CadastroComponent {
 
   onSubmit() {
     if (this.cadastroForm.valid) {
-      console.log('Formulário enviado:', this.cadastroForm.value);
-      this.router.navigate(['/home']);
-    } else {
-      console.log('Formulário inválido');
+      const novoUsuario = this.cadastroForm.value;
+      this.usuarioService.salvarUsuario(novoUsuario);
+      this.router.navigate(['/home']); // Redireciona para a página inicial após o cadastro
     }
   }
 

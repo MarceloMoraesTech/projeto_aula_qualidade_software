@@ -5,13 +5,15 @@
      <div *ngIf="usuarioValido" id="success-message">
       <p class="success"> Login efetuado com sucesso </p>
   </div>
-  <div *ngFor="let usuario of usuarios">
-    <div *ngIf="usuarios; else noUser">
-      <h2>Dados Cadastrados:</h2>
+  <div *ngIf="usuarios; else noUser">
+    <h2>Usuários Cadastrados:</h2>
+      <div *ngFor="let usuario of usuarios">
       <p><strong>Nome:</strong> {{ usuario.nome}}</p>
       <p><strong>Email:</strong> {{ usuario.email }}</p>
+      <button (click)="editarUsuario(usuario)">Editar</button>
+      <button (click)="deletarUsuario(usuario.email)">Deletar</button>
+      <hr/>
     </div>
-
   </div>
   
     <ng-template #noUser>

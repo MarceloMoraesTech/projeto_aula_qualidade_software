@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { HomeService, Usuario } from './home.service';
 import { HttpClientModule } from '@angular/common/http';
+import { UsuarioService } from '../usuario.service';
+import { Router } from '@angular/router';  // Importe o Router
+
 
 
 
@@ -15,25 +17,26 @@ import { HttpClientModule } from '@angular/common/http';
 })
 export class HomeComponent implements OnInit {
   usuarioValido: boolean = true;
-  usuarios: Usuario[] = [];
+  usuarios: any[] = [];
 
-  constructor(private homeService: HomeService) {}
+
+  constructor(private usuarioService: UsuarioService, private router: Router) {}
 
   ngOnInit(): void {
-    this.getUsuarios();
+    this.usuarios = this.usuarioService.obterUsuarios(); // Carrega os usuários ao inicializar a página
   }
 
-  getUsuarios(): void {
-    this.homeService.getAll().subscribe({
-      next: (data) => {
-        this.usuarios = data;
-        console.log('Dados recebidos:', this.usuarios);
-      },
-      error: (err) => {
-        console.error('Erro ao buscar usuários:', err);
-      }
-    });
-  }
+    // Função para deletar um usuário
+    deletarUsuario(email: string): void {
+      this.usuarioService.deletarUsuario(email); // Chama o serviço para remover
+      this.usuarios = this.usuarioService.obterUsuarios(); // Atualiza a lista após deletar
+    }
+  
+    // Função para editar um usuário, redireciona para o cadastro com os dados do usuário
+    editarUsuario(usuario: any): void {
+      this.router.navigate(['/cadastro'], { state: { usuario } }); // Passa o usuário como estado para o componente de cadastro
+    }
+
 }
 
 
