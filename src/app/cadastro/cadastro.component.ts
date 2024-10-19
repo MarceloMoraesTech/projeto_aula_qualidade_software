@@ -24,12 +24,27 @@ export class CadastroComponent {
     });
   }
 
-  onSubmit() {
-    if (this.cadastroForm.valid) {
-      const novoUsuario = this.cadastroForm.value;
-      this.usuarioService.salvarUsuario(novoUsuario);
-      this.router.navigate(['/home']); // Redireciona para a página inicial após o cadastro
+  ngOnInit() {
+    // Verifica se existe um usuário a ser editado no estado
+    const usuarioEditar = history.state.usuario;
+    if (usuarioEditar) {
+      this.cadastroForm.patchValue(usuarioEditar);
     }
   }
 
+  onSubmit() {
+    if (this.cadastroForm.valid) {
+      const usuario = this.cadastroForm.value;
+      if (usuario.id) {
+        this.usuarioService.atualizarUsuario(usuario);
+      } else {
+        this.usuarioService.salvarUsuario(usuario);
+      }
+  
+      // Redireciona para a home após a operação
+      this.router.navigate(['/home']);
+    }
+  }
+
+  
 }
